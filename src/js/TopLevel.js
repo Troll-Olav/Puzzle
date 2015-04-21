@@ -9,15 +9,6 @@ var App = React.createClass({
 			}
 		},
 
-		update: function(e){
-			this.setState({
-				position: {
-					x : 0,
-					y : 0
-				}
-			});
-		},
-
 		onDragStart: function(e){
 			console.log('onDragStart triggered');
 			this.setState({
@@ -39,6 +30,7 @@ var App = React.createClass({
 		},
 
 		onDrag: function(e){
+			console.log('onDrag triggered');
 			this.setState({
 				position: {
 					x: e.pageX - 88,
@@ -74,21 +66,30 @@ var App = React.createClass({
 		console.log('position props: ', position);
 
 		var imgStyle = {
-			"transform": "translate(" + this.props.position.x + "px, " + this.props.position.y +"px) translateZ(0) scale(1.0, 1.0)",
-			"webkit-transform": "translate(" + this.props.position.x + "px, " + this.props.position.y +"px)",
+			webkitTransform: "translate(" + this.props.position.x + "px, " + this.props.position.y +"px) scale(1.0, 1.0) translateZ(0)",
+			webkitBackfaceVisibility: "hidden",
+    		msTransform: "translate(" + this.props.position.x + "px, " + this.props.position.y +"px) scale(1.0, 1.0) translateZ(0)",
+			msBackfaceVisibility: "hidden",
+
+    		//WebkitTransform: "translateZ(0)",
 			position: 'relative',
-			opacity: 1
+			opacity: 1,
+			width: '100px',
+			height: '100px'
 		};
 
 
 		return(
-			<div style={imgStyle} >
-			<img 	onClick={this.props.clickHandler} 
-					onDrag={this.props.onDragHandler} 
-					onDragStart={this.props.dragHandler} 
-					onDragEnd={this.props.onDragEndHandler}
-					draggable={true}
-					src="./assets/img/troll.png" />
+			<div >
+				<img 	style={imgStyle}
+						onClick={this.props.clickHandler} 
+						onDrag={this.props.onDragHandler} 
+						onDragStart={this.props.dragHandler} 
+						onDragEnd={this.props.onDragEndHandler}
+						draggable={true}
+						src="./assets/img/ainsley.png" />
+				
+
 			</div>
 		);
 		}
