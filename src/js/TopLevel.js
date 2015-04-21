@@ -1,5 +1,5 @@
 var React 	 = require("react");
-var SquishApp = require("./components/PuzzleApp");
+var PuzzleApp = require("./components/PuzzleApp");
  
 React.render(
 	<PuzzleApp />, document.getElementById("content")
