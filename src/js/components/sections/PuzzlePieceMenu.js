@@ -1,9 +1,10 @@
 var React = require('react');
+var Board = require('./Board.js');
 
 var PuzzlePieceMenu = React.createClass({
 
     render: function(){
-		console.log(this.props);
+		console.log("this.props:", this.props);
 		var position = this.props.position;
 		console.log('position props: ', position);
 
@@ -25,7 +26,7 @@ var PuzzlePieceMenu = React.createClass({
 					src="./assets/img/troll.png" />
 			</div>
 		);
-		}
+    }
 });
 
 module.exports = PuzzlePieceMenu;

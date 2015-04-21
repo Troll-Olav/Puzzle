@@ -1,71 +1,15 @@
 var React = require("react");
-
+var PuzzlePieceMenu = require("./PuzzlePieceMenu.js");
+var PuzzleApp = require("./../PuzzleApp");
 
 React.initializeTouchEvents(true);
 
-var PuzzleApp = React.createClass({
-    
-		getInitialState: function(){
-			return {
-				position: {
-					x : 0,
-					y  : 0
-				}
-			};
-		},
+var Board = React.createClass({
 
-		update: function(e){
-			this.setState({
-				position: {
-					x : 0,
-					y : 0
-				}
-			});
-		},
-
-		onDragStart: function(e){
-			console.log('onDragStart triggered');
-			this.setState({
-				position: {
-					x: e.pageX - 88,
-					y: e.pageY - 88
-				}
-			});
-		},
-
-		onDragEnd: function(e){
-			console.log('onDragEnd triggered');
-			this.setState({
-				position: {
-					x: e.pageX - 88,
-					y: e.pageY - 88
-				}
-			});
-		},
-
-		onDrag: function(e){
-			this.setState({
-				position: {
-					x: e.pageX - 88,
-					y: e.pageY - 88
-				}
-			});
-		},
-
-		onClick: function(e){
-			console.log('onClick');
-			console.log(e.pageX);
-			this.setState({
-				position: {
-					x: e.pageX - 88,
-					y: e.pageY - 88
-				}
-			});
-		},
 		render: function(){
 			return (
 				<div>Hello there
-					<PuzzleBit position={this.state.position} clickHandler={this.onClick} onDragHandler={this.onDrag} dragHandler={this.onDragStart} onDragEndHandler={this.onDragEnd} />
+					<PuzzlePieceMenu position={this.props.position} clickHandler={this.props.onClick} onDragHandler={this.props.onDrag} dragHandler={this.props.onDragStart} onDragEndHandler={this.props.onDragEnd} />
 				</div>
 				);
 		}
