@@ -4,3 +4,4 @@ var PuzzleApp = require("./components/PuzzleApp");
 React.render(
 	<PuzzleApp />, document.getElementById("content")
 );
+
