@@ -2,7 +2,7 @@
   "name": "troll-olav-puzzle",
   "version": "1.0.0",
   "description": "a simple puzzle game for 3-4 year olds.",
-  "main": "gulpfile.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1", 
     "web": "node app",
