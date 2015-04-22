@@ -1,6 +1,9 @@
 var React = require('react');
 var Board = require('./Board.js');
 
+var x;
+var y;
+
 var PuzzlePieceMenu = React.createClass({
 
 componentDidMount: function(){
@@ -16,8 +19,8 @@ componentDidMount: function(){
 	    	console.log('y: ', this.y)
 	    },
 	    onDragEnd: function(e){
-	    	var x = this.x;
-	    	var y = this.y;
+	    	x = this.x;
+	    	y = this.y;
 	    	var target = e.target;
 	    	var x_goal = target.getAttribute('x');
 	    	var y_goal = target.getAttribute('y');
@@ -34,6 +37,11 @@ componentDidMount: function(){
 
 
 	},
+    
+    _onClick: function() {
+        y = 0;
+        
+    },
 
     render: function(){
 		console.log("this.props:", this.props);
@@ -50,6 +58,9 @@ componentDidMount: function(){
 		return(
 
 			<div className="row" style={imgStyle} >
+                <div className="col-md-6">
+                    <input type="submit" value="Play again" className="playAgain" onClick={this._onClick} />
+                </div>
                 <div className="col-md-12">
                     <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_A.png" />
                     <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_B.png" />
