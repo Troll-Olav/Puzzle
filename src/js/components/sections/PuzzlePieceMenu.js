@@ -45,11 +45,11 @@ componentDidMount: function(){
     
     
     _onClick: function() {
-        React.findDOMNode(this.refs.locationA).style.transform = "translate3d(0px, 0px, 0px)";
-        React.findDOMNode(this.refs.locationB).style.transform = "translate3d(0px, 0px, 0px)";
-        React.findDOMNode(this.refs.locationC).style.transform = "translate3d(0px, 0px, 0px)";
-        React.findDOMNode(this.refs.locationD).style.transform = "translate3d(0px, 0px, 0px)";
-        React.findDOMNode(this.refs.locationE).style.transform = "translate3d(0px, 0px, 0px)";
+        React.findDOMNode(this.refs.pieceA).style.transform = "translate3d(0px, 0px, 0px)";
+        React.findDOMNode(this.refs.pieceB).style.transform = "translate3d(0px, 0px, 0px)";
+        React.findDOMNode(this.refs.pieceC).style.transform = "translate3d(0px, 0px, 0px)";
+        React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
+        React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
     },
     
 
@@ -61,11 +61,11 @@ componentDidMount: function(){
                     <input type="submit" value="Play again" className="playAgain" onClick={this._onClick} />
                 </div>
                 <div className="col-md-12">
-                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_A.png" ref="locationA" />
-                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_B.png" ref="locationB" />
-                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_C.png" ref="locationC" />
-                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_D.png" ref="locationD" />
-                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_E.png" ref="locationE" />
+                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_A.png" ref="pieceA" />
+                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_B.png" ref="pieceB" />
+                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_C.png" ref="pieceC" />
+                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_D.png" ref="pieceD" />
+                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_E.png" ref="pieceE" />
                 </div>
 			</div>
 		);
