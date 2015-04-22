@@ -1,0 +1,13 @@
+.puzzleBoard {
+    width: 800px;
+    height: 550px;
+    display: block;
+    margin: auto;
+}
+
+
+#troll {
+    width: 200px;
+    height: auto;
+    display: inline-block;
+}

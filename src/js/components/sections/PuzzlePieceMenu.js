@@ -3,6 +3,43 @@ var Board = require('./Board.js');
 
 var PuzzlePieceMenu = React.createClass({
 
+componentDidMount: function(){
+
+    var content = document.getElementById("content");
+    //TweenLite.set(content);
+
+	var gridWidth = 200;
+	var gridHeight = 100;
+
+	//TweenLite.to(".troll", 2, { throwProps:{x:50, y:-30} });
+	Draggable.create(".troll", {
+	    type:"x,y",
+	    throwProps:true,
+	    bounds: content,
+	    onDrag: function(){
+	    	console.log('dragging');
+	    	console.log(this.x);
+	    	console.log(this.y);
+	    },
+	    onDragEnd: function(){
+	    	console.log('ended');
+	    	console.log(this.x);
+	    	console.log(this.y);
+	    	
+	    },
+	    snap: {
+	        x: function(endValue) {
+	             Math.round(endValue / gridWidth) * gridWidth;
+	        },
+	        y: function(endValue) {
+	            Math.round(endValue / gridHeight) * gridHeight;
+	        }
+	    }
+	});
+
+
+	},
+
     render: function(){
 		console.log("this.props:", this.props);
 		var position = this.props.position;
@@ -15,15 +52,16 @@ var PuzzlePieceMenu = React.createClass({
 			opacity: 1
 		};
 
-
 		return(
-			<div style={imgStyle} >
-			<img 	onClick={this.props.clickHandler} 
-					onDrag={this.props.onDragHandler} 
-					onDragStart={this.props.dragHandler} 
-					onDragEnd={this.props.onDragEndHandler}
-					draggable={true}
-					src="./assets/img/troll.png" />
+			<div className="row" style={imgStyle} >
+                <div className="col-md-12">
+                    <img id="troll" className="troll" src="./assets/img/Puzzle_A.png" />
+                    <img id="troll" className="troll" src="./assets/img/Puzzle_B.png" />
+                    <img id="troll" className="troll" src="./assets/img/Puzzle_C.png" />
+                    <img id="troll" className="troll" src="./assets/img/Puzzle_D.png" />
+                    <img id="troll" className="troll" src="./assets/img/Puzzle_E.png" />
+                    
+                </div>
 			</div>
 		);
     }
