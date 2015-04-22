@@ -4,8 +4,17 @@ var Board = require('./Board.js');
 var x;
 var y;
 var imgArray;
+var eachImage = [];
+var tempValue, randomIndex;
+var currentIndex;
 
 var PuzzlePieceMenu = React.createClass({
+    
+    getInitialState: function() {
+        return ({
+             eachRandomArr: null
+        });
+    },
 
 componentDidMount: function(){
 
@@ -52,31 +61,35 @@ componentDidMount: function(){
         React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
 		
-		
-	
-		
-//    var currentIndex = imgArray.length;
-//    var tempValue, randomIndex;
-//		while (0 !== currentIndex) {
-//			randomIndex = Math.floor(Math.random() * currentIndex);
-//			currentIndex -= 1;
-//			tempValue = imgArray[currentIndex];
-//			imgArray[currentIndex] = imgArray[randomIndex];
-//			imgArray[randomIndex] = tempValue;
-//		}
+        var slicedArr = imgArray.slice();
+        currentIndex = slicedArr.length;
+		while (0 !== currentIndex) {
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+			tempValue = slicedArr[currentIndex];
+			slicedArr[currentIndex] = slicedArr[randomIndex];
+			slicedArr[randomIndex] = tempValue;
+            console.log("tempvalue:", tempValue);
+            console.log("currentIndex:", currentIndex);
+            console.log("randomindex:", randomIndex);
+            
+            this.setState({
+                eachRandomArr: slicedArr.slice(0, 5)
+            });
+            
+		}
     },
+    
     
 
     render: function(){
 		imgArray = [<img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_A.png" ref="pieceA" key="pieceA" />, <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_B.png" ref="pieceB" key="pieceB" />, <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_C.png" ref="pieceC" key="pieceC" />, <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_D.png" ref="pieceD" key="pieceD" />, <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_E.png" ref="pieceE" key="pieceE" />];
 		
-        var eachImage = [];
-        console.log(eachImage);
+        console.log("each image is", eachImage);
 		for (var i = 0; i < imgArray.length; i++) {
-            console.log(eachImage);
 			eachImage.push(imgArray[i]);
         }
-			
+        var finalArr = this.state.eachRandomArr;
 		return(
             <div>
                 <div className="row">
@@ -85,7 +98,7 @@ componentDidMount: function(){
                     </div>
                 </div>
                 <div className="row">
-                    {eachImage}
+                    {finalArr}
                 </div>
             </div>
 		);
