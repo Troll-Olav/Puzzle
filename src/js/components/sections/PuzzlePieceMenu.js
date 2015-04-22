@@ -53,10 +53,15 @@ componentDidMount: function(){
 		};
 
 		return(
-			<div style={imgStyle} >
-			<img 	id="troll"
-					className="troll"
-					src="./assets/img/troll.png" />
+			<div className="row" style={imgStyle} >
+                <div className="col-md-12">
+                    <img id="troll" className="troll" src="./assets/img/Puzzle_A.png" />
+                    <img id="troll" className="troll" src="./assets/img/Puzzle_B.png" />
+                    <img id="troll" className="troll" src="./assets/img/Puzzle_C.png" />
+                    <img id="troll" className="troll" src="./assets/img/Puzzle_D.png" />
+                    <img id="troll" className="troll" src="./assets/img/Puzzle_E.png" />
+                    
+                </div>
 			</div>
 		);
     }
