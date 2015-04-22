@@ -8,10 +8,12 @@ var Board = React.createClass({
 
 		render: function(){
 			return (
-				<div>Hello there
-					<PuzzlePieceMenu position={this.props.position} clickHandler={this.props.onClick} onDragHandler={this.props.onDrag} dragHandler={this.props.onDragStart} onDragEndHandler={this.props.onDragEnd} />
+				<div className="row">
+                    <div className="col-md-12">
+                        <img className="puzzleBoard" src="./assets/img/Example.jpg"></img>
+                    </div>
 				</div>
-				);
+            );
 		}
 	});
 
