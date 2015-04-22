@@ -66,9 +66,6 @@ var PuzzleApp = React.createClass({
                 <div className="row">
                     <Board position={this.state.position} />
                 </div>
-                <div className="row">
-                    <PuzzlePieceMenu position={this.state.position} />
-                </div>
             </div>
         );
     }
