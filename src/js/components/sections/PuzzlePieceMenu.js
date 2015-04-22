@@ -1,6 +1,9 @@
 var React = require('react');
 var Board = require('./Board.js');
 
+var x;
+var y;
+
 var PuzzlePieceMenu = React.createClass({
 
 componentDidMount: function(){
@@ -39,17 +42,26 @@ componentDidMount: function(){
 
 
 	},
+    
+    _onClick: function() {
+        
+        y = 0;
+        
+    },
 
     render: function(){
 
 		return(
-			<div className="row" >
+			<div className="row" style={imgStyle} >
+                <div className="col-md-6">
+                    <input type="submit" value="Play again" className="playAgain" onClick={this._onClick} />
+                </div>
                 <div className="col-md-12">
-                    <img  x="200" y="200" className="troll" src="./assets/img/Puzzle_A.png" />
-                    <img  x="200" y="200" className="troll" src="./assets/img/Puzzle_B.png" />
-                    <img  x="200" y="200" className="troll" src="./assets/img/Puzzle_C.png" />
-                    <img  x="200" y="200" className="troll" src="./assets/img/Puzzle_D.png" />
-                    <img  x="-200" y="-200" className="troll" src="./assets/img/Puzzle_E.png" />
+                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_A.png" />
+                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_B.png" />
+                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_C.png" />
+                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_D.png" />
+                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_E.png" />
                 </div>
 			</div>
 		);
