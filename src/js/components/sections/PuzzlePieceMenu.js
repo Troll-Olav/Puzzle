@@ -39,6 +39,7 @@ componentDidMount: function(){
 	},
     
     _onClick: function() {
+        
         y = 0;
         
     },
