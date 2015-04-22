@@ -3,6 +3,7 @@ var Board = require('./Board.js');
 
 var x;
 var y;
+var imgArray;
 
 var PuzzlePieceMenu = React.createClass({
 
@@ -50,26 +51,45 @@ componentDidMount: function(){
         React.findDOMNode(this.refs.pieceC).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
+		
+		
+	
+		
+//    var currentIndex = imgArray.length;
+//    var tempValue, randomIndex;
+//		while (0 !== currentIndex) {
+//			randomIndex = Math.floor(Math.random() * currentIndex);
+//			currentIndex -= 1;
+//			tempValue = imgArray[currentIndex];
+//			imgArray[currentIndex] = imgArray[randomIndex];
+//			imgArray[randomIndex] = tempValue;
+//		}
     },
     
 
     render: function(){
-
+		imgArray = [<img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_A.png" ref="pieceA" key="pieceA" />, <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_B.png" ref="pieceB" key="pieceB" />, <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_C.png" ref="pieceC" key="pieceC" />, <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_D.png" ref="pieceD" key="pieceD" />, <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_E.png" ref="pieceE" key="pieceE" />];
+		
+        var eachImage = [];
+        console.log(eachImage);
+		for (var i = 0; i < imgArray.length; i++) {
+            console.log(eachImage);
+			eachImage.push(imgArray[i]);
+        }
+			
 		return(
-			<div className="row">
-                <div className="col-md-12">
-                    <input type="submit" value="Spill Igjen" id="playAgain" onClick={this._onClick} />
+            <div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <input type="submit" value="Spill Igjen" id="playAgain" onClick={this._onClick} />
+                    </div>
                 </div>
-                <div className="col-md-12">
-                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_A.png" ref="pieceA" />
-                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_B.png" ref="pieceB" />
-                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_C.png" ref="pieceC" />
-                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_D.png" ref="pieceD" />
-                    <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_E.png" ref="pieceE" />
+                <div className="row">
+                    {eachImage}
                 </div>
-			</div>
+            </div>
 		);
-    }
+	}
 });
 
 module.exports = PuzzlePieceMenu;
