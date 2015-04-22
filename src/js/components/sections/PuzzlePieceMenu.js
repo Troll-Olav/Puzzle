@@ -6,34 +6,29 @@ var PuzzlePieceMenu = React.createClass({
 componentDidMount: function(){
 
     var content = document.getElementById("content");
-    //TweenLite.set(content);
 
-	var gridWidth = 200;
-	var gridHeight = 100;
-
-	//TweenLite.to(".troll", 2, { throwProps:{x:50, y:-30} });
 	Draggable.create(".troll", {
 	    type:"x,y",
 	    throwProps:true,
 	    bounds: content,
 	    onDrag: function(){
-	    	console.log('dragging');
-	    	console.log(this.x);
-	    	console.log(this.y);
+	    	console.log('x: ', this.x);
+	    	console.log('y: ', this.y)
 	    },
-	    onDragEnd: function(){
-	    	console.log('ended');
-	    	console.log(this.x);
-	    	console.log(this.y);
-	    	
-	    },
-	    snap: {
-	        x: function(endValue) {
-	             Math.round(endValue / gridWidth) * gridWidth;
-	        },
-	        y: function(endValue) {
-	            Math.round(endValue / gridHeight) * gridHeight;
-	        }
+	    onDragEnd: function(e){
+	    	var x = this.x;
+	    	var y = this.y;
+	    	var target = e.target;
+	    	var x_goal = target.getAttribute('x');
+	    	var y_goal = target.getAttribute('y');
+	    	var x_diff = Math.abs(x_goal - x);
+	    	var y_diff = Math.abs(y_goal - y);
+	    	if (x_diff < 100 && y_diff < 100) {
+	    		console.log('hit target!');
+	 	    	TweenLite.to(target, 0.5, {x: x_goal,y: y_goal, onComplete: function(){
+	 	    		console.log('completed');
+	 	    	}})
+	    	}
 	    }
 	});
 
@@ -56,6 +51,8 @@ componentDidMount: function(){
 			<div style={imgStyle} >
 			<img 	id="troll"
 					className="troll"
+					x="200"
+					y="200"
 					src="./assets/img/troll.png" />
 			</div>
 		);
