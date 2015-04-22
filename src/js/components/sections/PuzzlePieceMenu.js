@@ -19,17 +19,22 @@ componentDidMount: function(){
 	    	console.log('y: ', this.y)
 	    },
 	    onDragEnd: function(e){
-	    	x = this.x;
-	    	y = this.y;
+	    	console.log('done');
 	    	var target = e.target;
 	    	var x_goal = target.getAttribute('x');
 	    	var y_goal = target.getAttribute('y');
-	    	var x_diff = Math.abs(x_goal - x);
-	    	var y_diff = Math.abs(y_goal - y);
+	    	var offset = $(target).offset();
+	    	console.log('offset.left: ', offset.left);
+	    	console.log('offset.top: ', offset.top);
+	    	var x_diff = Math.abs(x_goal - offset.left);
+	    	var y_diff = Math.abs(y_goal - offset.top);
+	    	console.log('x_diff: ', x_diff);
+	    	console.log('y_diff: ', y_diff);
+
 	    	if (x_diff < 100 && y_diff < 100) {
 	    		console.log('hit target!');
-	 	    	TweenLite.to(target, 0.5, {x: x_goal,y: y_goal, onComplete: function(){
-	 	    		console.log('completed');
+	 	    	TweenLite.to(target, 0.5, { x: x_goal, y: y_goal, onComplete: function(){
+
 	 	    	}})
 	    	}
 	    }
@@ -45,19 +50,8 @@ componentDidMount: function(){
     },
 
     render: function(){
-		console.log("this.props:", this.props);
-		var position = this.props.position;
-		console.log('position props: ', position);
-
-		var imgStyle = {
-			"transform": "translate(" + this.props.position.x + "px, " + this.props.position.y +"px) translateZ(0) scale(1.0, 1.0)",
-			"webkit-transform": "translate(" + this.props.position.x + "px, " + this.props.position.y +"px)",
-			position: 'relative',
-			opacity: 1
-		};
 
 		return(
-
 			<div className="row" style={imgStyle} >
                 <div className="col-md-6">
                     <input type="submit" value="Play again" className="playAgain" onClick={this._onClick} />

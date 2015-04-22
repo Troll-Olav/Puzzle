@@ -3,4 +3,4 @@ node_modules
 .DS_Store
 
 
-./public/assets/js/main.js
+public/assets/js/main.js
