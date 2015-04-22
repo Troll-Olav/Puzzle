@@ -11,3 +11,16 @@
     height: auto;
     display: inline-block;
 }
+
+
+#playAgain {
+    display: block;
+    margin: auto;
+    border: none;
+    background-color: #8fefef;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 8px;
+    margin-top: 5px; 
+}
