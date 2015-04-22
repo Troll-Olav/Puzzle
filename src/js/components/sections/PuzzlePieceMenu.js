@@ -58,7 +58,7 @@ componentDidMount: function(){
 		return(
 			<div className="row">
                 <div className="col-md-12">
-                    <input type="submit" value="Spill Igjen" id="playAgain" className="form-control" onClick={this._onClick} />
+                    <input type="submit" value="Spill Igjen" id="playAgain" onClick={this._onClick} />
                 </div>
                 <div className="col-md-12">
                     <img id="troll" x="200" y="200" className="troll" src="./assets/img/Puzzle_A.png" ref="pieceA" />
