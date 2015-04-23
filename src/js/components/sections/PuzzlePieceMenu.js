@@ -6,6 +6,18 @@ var PuzzlePieceMenu = React.createClass({
 componentDidMount: function(){
 
     var content = document.getElementById("content");
+    console.log('windowWidth is ', this.props.window);
+
+    var windowWidth = this.props.window;
+	var puzzleWidth = windowWidth * 0.8;
+	var puzzleHeight = puzzleWidth * 0.738;
+	var margin_left = windowWidth *0.1;
+	var pixelsPerPercentWidth = puzzleWidth / 100;
+	var pixelsPerPercentHeight = puzzleHeight / 100;
+
+	console.log('puzzleHeight: ', puzzleHeight);
+
+	console.log()
 
 	var puzzleBrick = Draggable.create(".troll", {
 	    type:"x,y",
@@ -23,9 +35,16 @@ componentDidMount: function(){
 
 	    },
 	    onDragEnd: function(e){
+
 	    	var target = e.target;
-	    	var x_goal = target.getAttribute('x');
-	    	var y_goal = target.getAttribute('y');
+	    	var x_percent = target.getAttribute('x');
+	    	var y_percent = target.getAttribute('y');
+
+	    	var y_goal = (pixelsPerPercentWidth * y_percent);
+	    	var x_goal = margin_left + (pixelsPerPercentHeight * x_percent);
+
+
+
 	    	console.log('x_goal: ',x_goal);
 	    	console.log('y_goal: ',y_goal);
 	    	var element = $(target);
@@ -135,16 +154,15 @@ componentDidMount: function(){
 
     render: function(){
 
-		return(
-			<div className="row" >
-                <div className="col-md-12">
-                    <img x="370" y="180"  className="troll" src="./assets/img/Puzzle_A.png" />
-                    <img x="440" y="420" className="troll" src="./assets/img/Puzzle_B.png" />
-                    <img  x="600" y="260" className="troll" src="./assets/img/Puzzle_C.png" />
-                    <img  x="850" y="130" className="troll" src="./assets/img/Puzzle_D.png" />
-                    <img x="870" y="370"   className="troll" src="./assets/img/Puzzle_E.png" />
 
-                </div>
+
+		return(
+			<div>
+                    <img x="25" y="25" className="troll" src="./assets/img/Puzzle_A.png" />
+                    <img x="35" y="55" className="troll" src="./assets/img/Puzzle_B.png" />
+                    <img x="65" y="35" className="troll" src="./assets/img/Puzzle_C.png" />
+                    <img x="105" y="18" className="troll" src="./assets/img/Puzzle_D.png" />
+                    <img x="110" y="50" className="troll" src="./assets/img/Puzzle_E.png" />
 			</div>
 		);
     }

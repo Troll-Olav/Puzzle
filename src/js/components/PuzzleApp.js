@@ -3,14 +3,10 @@ var Board           = require("./sections/Board");
 var PuzzlePieceMenu = require("./sections/PuzzlePieceMenu");
 
 var PuzzleApp = React.createClass({
-    getInitialState: function(){
-			return {
-				position: {
-					x : 0,
-					y  : 0
-				}
-			};
-		},
+	
+		getInitialState: function() {
+		    return {windowWidth: window.innerWidth};
+		 },
 
 		update: function(e){
 			this.setState({
@@ -61,14 +57,14 @@ var PuzzleApp = React.createClass({
 			});
 		},
     render: function() {
+    	console.log('windowWitdh: ', this.state.windowWidth)
         return (
             <div>
                 <div className="row">
                     <Board position={this.state.position} />
+                    <PuzzlePieceMenu position={this.state.position} window={this.state.windowWidth} clickHandler={this.state.onClick} onDragHandler={this.state.onDrag} dragHandler={this.state.onDragStart} onDragEndHandler={this.state.onDragEnd} />
                 </div>
-                <div className="row">
-                    <PuzzlePieceMenu position={this.state.position} clickHandler={this.state.onClick} onDragHandler={this.state.onDrag} dragHandler={this.state.onDragStart} onDragEndHandler={this.state.onDragEnd} />
-                </div>
+
             </div>
         );
     }
