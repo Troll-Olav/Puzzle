@@ -8,7 +8,7 @@ console.log(index);
 
 server.connection({
   port: process.env.PORT || 8000,
-    host: "0.0.0.0" || "localhost"
+    host: "0.0.0.0"
 });
 
 

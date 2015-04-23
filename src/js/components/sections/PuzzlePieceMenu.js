@@ -165,7 +165,6 @@ componentDidMount: function(){
 
 		return(
 			<div>
-
 			        <div className="col-md-12">
                         <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick} />
                     </div>
