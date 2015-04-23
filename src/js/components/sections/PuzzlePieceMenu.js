@@ -149,13 +149,12 @@ componentDidMount: function(){
             for (i=0;i<puzzleBrick.length;i++){
                 if (puzzleBrick[i] === that){
                     disable(i);
+                    audio.play();
                 }	    
             }		
         });
-        
-
 	}
-        audio.play();
+        
 	},
     
     
