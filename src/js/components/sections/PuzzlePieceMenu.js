@@ -1,6 +1,9 @@
 var React = require('react');
 var Board = require('./Board.js');
 
+var audio = new Audio('./assets/audio/cheer.mp3');
+
+
 var PuzzlePieceMenu = React.createClass({
 
 componentWillMount: function(){
@@ -19,8 +22,6 @@ componentDidMount: function(){
 	var pixelsPerPercentHeight = puzzleHeight / 100;
 
 	console.log('puzzleHeight: ', puzzleHeight);
-
-	console.log()
 
 
 
@@ -137,24 +138,24 @@ componentDidMount: function(){
 	function disable(index){
 		puzzleBrick[index].disable();
 		console.log(puzzleBrick);
-		console.log('DISABLING DRAGGABLE')
-	};
-
-
+		console.log('DISABLING DRAGGABLE');
+	}
+    
 	function animate(element, distance_top, distance_left, that){
 		element.animate({
 			top: distance_top,
 			left: distance_left
 		}, 700, function(){
-		for (i=0;i<puzzleBrick.length;i++){
-			if (puzzleBrick[i] === that){
-				disable(i);
-			}	    
-		}		
-});
-
+            for (i=0;i<puzzleBrick.length;i++){
+                if (puzzleBrick[i] === that){
+                    disable(i);
+                    audio.play();
+                }	    
+            }		
+        });
+        
 	}
-
+        
 	},
     
     
@@ -165,11 +166,10 @@ componentDidMount: function(){
         React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
 		
-				//        <div className="col-md-12">
-                //           <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick} />
-                //     </div>
-
-
+    },
+    
+    muter: function() {
+        audio.muted = true;
     },
     
 
@@ -178,26 +178,24 @@ componentDidMount: function(){
     	var style = {
     		left: ""
     	}
-
+        
 		return(
-
 			<div>
-			<div className="characterMenuTop row col-md-12">
+                <div className="characterMenuTop row col-md-12">
                     <img x="25" y="25" className="troll" style={style} id="trollOlav" ref="pieceA"  key="pieceA" src="./assets/img/Puzzle_A.png" />
                     <img x="110" y="50" className="troll" style={style} id="girl" ref="pieceE"  key="pieceB" src="./assets/img/Puzzle_E.png" />
-			</div>
-
-
-			<div className="characterMenuBottom row col-md-12">
+                </div>
+                <div className="characterMenuBottom row col-md-12">
                     <img x="35" y="55" className="troll" style={style} id="sealBoy" ref="pieceB"  key="pieceC" src="./assets/img/Puzzle_B.png" />
                     <img x="65" y="35" className="troll" style={style} id="snowMan" ref="pieceC"  key="pieceD" src="./assets/img/Puzzle_C.png" />
                     <img x="105" y="18" className="troll" style={style} id="sealGirl" ref="pieceD"  key="pieceE" src="./assets/img/Puzzle_D.png" />
-			</div>
-
-
-			</div>
+                </div>
+                <div className="buttonsDiv">
+                    <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick} />
+                    <button className="glyphicon glyphicon-volume-off" onClick={this.muter} />
+                </div>
+            </div>
 		);
-
     }
 });
 
