@@ -2,6 +2,45 @@ body{
 	margin: 0;
 }
 
+#girl{
+    float: left;
+}
+#trollOlav{
+    float: right;
+}
+
+#snowMan{
+    float: left;
+}
+
+#sealBoy{
+    float:right;
+    margin-top: 50px;
+}
+
+#sealGirl{
+    float:right;
+    margin-top: 50px;
+
+
+}
+
+.characterMenuTop{
+    position: absolute !important;
+    top:10px;
+    display: block;
+    width: 100%;
+    padding: 0px;
+}
+
+.characterMenuBottom{
+    position: absolute !important;
+    top: 375px;
+    display: block;
+    width: 100%;
+    padding: 0px;
+}
+
 .puzzleBoard {
     width: 80%;
     margin-left:auto;margin-right:auto;
@@ -17,19 +56,33 @@ body{
 	position: relative;
     width: 200px;
     height: auto;
-    display: inline-block;
+    display: inline;
 }
 
 
 #playAgain {
-    display: block;
+    display: inline-block;
     margin: auto;
     border: none;
     background-color: #8fefef;
     color: white;
     padding: 20px;
-    font-size: 20px;
+    font-size: 23px;
     border-radius: 8px;
-    margin-top: 5px; 
-    border: 1px solid lightgrey;
+    margin: 10px 10px 15px;
 }
+
+.glyphicon-volume-off {
+    display: inline-block;
+    margin: auto;
+    padding: 20px;
+    margin: 10px;
+    border: none;
+    color: white;
+    background-color: #DB7093;
+    border-radius: 8px;
+    font-size: 30px;
+}
+
+
+
