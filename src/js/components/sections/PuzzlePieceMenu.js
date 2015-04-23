@@ -1,9 +1,6 @@
 var React = require('react');
 var Board = require('./Board.js');
 
-var x;
-var y;
-
 var PuzzlePieceMenu = React.createClass({
 
 componentDidMount: function(){
@@ -160,15 +157,18 @@ componentDidMount: function(){
         React.findDOMNode(this.refs.pieceC).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
+		
     },
     
 
     render: function(){
 
-
-
 		return(
 			<div>
+
+			        <div className="col-md-12">
+                        <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick} />
+                    </div>
                     <img x="25" y="25" className="troll" src="./assets/img/Puzzle_A.png" />
                     <img x="35" y="55" className="troll" src="./assets/img/Puzzle_B.png" />
                     <img x="65" y="35" className="troll" src="./assets/img/Puzzle_C.png" />
@@ -177,6 +177,7 @@ componentDidMount: function(){
 
 			</div>
 		);
+
     }
 });
 
