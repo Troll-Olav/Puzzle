@@ -1,6 +1,9 @@
 var React = require('react');
 var Board = require('./Board.js');
 
+var x;
+var y;
+
 var PuzzlePieceMenu = React.createClass({
 
 componentDidMount: function(){
@@ -30,8 +33,6 @@ componentDidMount: function(){
 	    	console.log('offset: ', offset);
 	    	console.log('x_center: ', x_center);
 	    	console.log('y_center: ', y_center);
-
-
 
 	    },
 	    onDragEnd: function(e){
@@ -151,6 +152,16 @@ componentDidMount: function(){
 	}
 
 	},
+    
+    
+    _onClick: function() {
+        React.findDOMNode(this.refs.pieceA).style.transform = "translate3d(0px, 0px, 0px)";
+        React.findDOMNode(this.refs.pieceB).style.transform = "translate3d(0px, 0px, 0px)";
+        React.findDOMNode(this.refs.pieceC).style.transform = "translate3d(0px, 0px, 0px)";
+        React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
+        React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
+    },
+    
 
     render: function(){
 
@@ -163,6 +174,7 @@ componentDidMount: function(){
                     <img x="65" y="35" className="troll" src="./assets/img/Puzzle_C.png" />
                     <img x="105" y="18" className="troll" src="./assets/img/Puzzle_D.png" />
                     <img x="110" y="50" className="troll" src="./assets/img/Puzzle_E.png" />
+
 			</div>
 		);
     }
