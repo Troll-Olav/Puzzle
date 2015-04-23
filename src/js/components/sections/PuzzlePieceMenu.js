@@ -161,19 +161,17 @@ componentDidMount: function(){
     },
     
 
-    render: function(){
-
+    render: function(){    
 		return(
 			<div>
-
 			        <div className="col-md-12">
                         <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick} />
                     </div>
-                    <img x="25" y="25" className="troll" src="./assets/img/Puzzle_A.png" />
-                    <img x="35" y="55" className="troll" src="./assets/img/Puzzle_B.png" />
-                    <img x="65" y="35" className="troll" src="./assets/img/Puzzle_C.png" />
-                    <img x="105" y="18" className="troll" src="./assets/img/Puzzle_D.png" />
-                    <img x="110" y="50" className="troll" src="./assets/img/Puzzle_E.png" />
+                    <img x="25" y="25" className="troll" src="./assets/img/Puzzle_A.png" ref="pieceA" key="pieceA" />
+                    <img x="35" y="55" className="troll" src="./assets/img/Puzzle_B.png" ref="pieceB" key="pieceB" />
+                    <img x="65" y="35" className="troll" src="./assets/img/Puzzle_C.png" ref="pieceC" key="pieceC" />
+                    <img x="105" y="18" className="troll" src="./assets/img/Puzzle_D.png" ref="pieceD" key="pieceD" />
+                    <img x="110" y="50" className="troll" src="./assets/img/Puzzle_E.png" ref="pieceE" key="pieceE" />
 
 			</div>
 		);
