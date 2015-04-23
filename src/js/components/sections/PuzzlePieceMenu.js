@@ -196,16 +196,17 @@ componentDidMount: function(){
 
 			<div>
 			<div className="characterMenuTop row col-md-12">
-                    <img x="25" y="25" className="troll" style={style} id="trollOlav" ref="pieceA" src="./assets/img/Puzzle_A.png" />
-                    <img x="110" y="50" className="troll" style={style} id="girl" ref="pieceE" src="./assets/img/Puzzle_E.png" />
+                    <img x="25" y="25" className="troll" style={style} id="trollOlav" ref="pieceA"  key="pieceA" src="./assets/img/Puzzle_A.png" />
+                    <img x="110" y="50" className="troll" style={style} id="girl" ref="pieceE"  key="pieceB" src="./assets/img/Puzzle_E.png" />
 			</div>
 
 
 			<div className="characterMenuBottom row col-md-12">
-                    <img x="35" y="55" className="troll" style={style} id="sealBoy" ref="pieceB" src="./assets/img/Puzzle_B.png" />
-                    <img x="65" y="35" className="troll" style={style} id="snowMan" ref="pieceC" src="./assets/img/Puzzle_C.png" />
-                    <img x="105" y="18" className="troll" style={style} id="sealGirl" ref="pieceD" src="./assets/img/Puzzle_D.png" />
+                    <img x="35" y="55" className="troll" style={style} id="sealBoy" ref="pieceB"  key="pieceC" src="./assets/img/Puzzle_B.png" />
+                    <img x="65" y="35" className="troll" style={style} id="snowMan" ref="pieceC"  key="pieceD" src="./assets/img/Puzzle_C.png" />
+                    <img x="105" y="18" className="troll" style={style} id="sealGirl" ref="pieceD"  key="pieceE" src="./assets/img/Puzzle_D.png" />
 			</div>
+
 
 			</div>
 		);
