@@ -8,22 +8,9 @@ componentWillMount: function(){
 },
 
 componentDidMount: function(){
-	var windowWidth = this.props.window;
-	console.log(React.findDOMNode(this.refs.pieceA));
-
-	var fifth = windowWidth / 5;
-
-	React.findDOMNode(this.refs.pieceA).style.zIndex = 1;
-    React.findDOMNode(this.refs.pieceB).style.zIndex = 2;
-    React.findDOMNode(this.refs.pieceC).style.zIndex = 3;
-    React.findDOMNode(this.refs.pieceD).style.zIndex = 4;
-    React.findDOMNode(this.refs.pieceE).style.zIndex = 5;
-
 
 
     var content = document.getElementById("content");
-    console.log('windowWidth is ', this.props.window);
-
     var windowWidth = this.props.window;
 	var puzzleWidth = windowWidth * 0.8;
 	var puzzleHeight = puzzleWidth * 0.738;
