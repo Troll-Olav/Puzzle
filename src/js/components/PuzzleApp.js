@@ -62,7 +62,12 @@ var PuzzleApp = React.createClass({
             <div>
                 <div className="row">
                     <Board position={this.state.position} />
-                    <PuzzlePieceMenu position={this.state.position} window={this.state.windowWidth} clickHandler={this.state.onClick} onDragHandler={this.state.onDrag} dragHandler={this.state.onDragStart} onDragEndHandler={this.state.onDragEnd} />
+                    <PuzzlePieceMenu 	position={this.state.position} 
+                    					window={this.state.windowWidth} 
+                    					clickHandler={this.state.onClick} 
+                    					onDragHandler={this.state.onDrag} 
+                    					dragHandler={this.state.onDragStart} 
+                    					onDragEndHandler={this.state.onDragEnd} />
                 </div>
 
             </div>

@@ -2,6 +2,45 @@ body{
 	margin: 0;
 }
 
+#girl{
+    float: left;
+}
+#trollOlav{
+    float: right;
+}
+
+#snowMan{
+    float: left;
+}
+
+#sealBoy{
+    float:right;
+    margin-top: 50px;
+}
+
+#sealGirl{
+    float:right;
+    margin-top: 50px;
+
+
+}
+
+.characterMenuTop{
+    position: absolute !important;
+    top:10px;
+    display: block;
+    width: 100%;
+    padding: 0px;
+}
+
+.characterMenuBottom{
+    position: absolute !important;
+    top: 375px;
+    display: block;
+    width: 100%;
+    padding: 0px;
+}
+
 .puzzleBoard {
     width: 80%;
     margin-left:auto;margin-right:auto;
@@ -17,7 +56,7 @@ body{
 	position: relative;
     width: 200px;
     height: auto;
-    display: inline-block;
+    display: inline;
 }
 
 
