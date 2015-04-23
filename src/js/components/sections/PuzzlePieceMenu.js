@@ -2,6 +2,7 @@ var React = require('react');
 var Board = require('./Board.js');
 
 var audio = new Audio('./assets/audio/cheer.mp3');
+//var finalCheer = new Audio('http://www.noiseaddicts.com/samples/3733.mp3');
 
 
 var PuzzlePieceMenu = React.createClass({
@@ -137,8 +138,21 @@ componentDidMount: function(){
 	
 	function disable(index){
 		puzzleBrick[index].disable();
-		console.log(puzzleBrick);
+        var i;
+//        var count = 0;
+//        var disabled = [];
+        for (i=0;i<puzzleBrick.length;i++){
+//            count++;
+//            if (count === 5 ) {
+//                finalCheer.play();
+//            }
+//            console.log("count:", count);
+//            puzzleBrick[i] = puzzleBrick[index];
+//            disabled.push(puzzleBrick[i]);
+//            console.log("disabled:", disabled);
+        }
 		console.log('DISABLING DRAGGABLE');
+
 	}
     
 	function animate(element, distance_top, distance_left, that){
@@ -146,6 +160,7 @@ componentDidMount: function(){
 			top: distance_top,
 			left: distance_left
 		}, 700, function(){
+            var i;
             for (i=0;i<puzzleBrick.length;i++){
                 if (puzzleBrick[i] === that){
                     disable(i);
@@ -153,6 +168,7 @@ componentDidMount: function(){
                 }	    
             }		
         });
+        
 	}
         
 	},
