@@ -3,7 +3,23 @@ var Board = require('./Board.js');
 
 var PuzzlePieceMenu = React.createClass({
 
+componentWillMount: function(){
+
+},
+
 componentDidMount: function(){
+	var windowWidth = this.props.window;
+	console.log(React.findDOMNode(this.refs.pieceA));
+
+	var fifth = windowWidth / 5;
+
+	React.findDOMNode(this.refs.pieceA).style.zIndex = 1;
+    React.findDOMNode(this.refs.pieceB).style.zIndex = 2;
+    React.findDOMNode(this.refs.pieceC).style.zIndex = 3;
+    React.findDOMNode(this.refs.pieceD).style.zIndex = 4;
+    React.findDOMNode(this.refs.pieceE).style.zIndex = 5;
+
+
 
     var content = document.getElementById("content");
     console.log('windowWidth is ', this.props.window);
@@ -11,7 +27,7 @@ componentDidMount: function(){
     var windowWidth = this.props.window;
 	var puzzleWidth = windowWidth * 0.8;
 	var puzzleHeight = puzzleWidth * 0.738;
-	var margin_left = windowWidth *0.1;
+	var margin_left = (windowWidth - puzzleWidth) / 2;
 	var pixelsPerPercentWidth = puzzleWidth / 100;
 	var pixelsPerPercentHeight = puzzleHeight / 100;
 
@@ -19,9 +35,11 @@ componentDidMount: function(){
 
 	console.log()
 
+
+
 	var puzzleBrick = Draggable.create(".troll", {
 	    type:"x,y",
-	    bounds: content,
+	    bounds: window,
 	    onDrag: function(e){
 	    	var target = e.target;
 	    	var offset = $(target).offset();
@@ -126,6 +144,8 @@ componentDidMount: function(){
 	    	}
 	    	}
 		});
+
+
 	
 	function disable(index){
 		puzzleBrick[index].disable();
@@ -158,20 +178,35 @@ componentDidMount: function(){
         React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
 		
+				//        <div className="col-md-12">
+                //           <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick} />
+                //     </div>
+
+
     },
     
 
-    render: function(){    
+    render: function(){
+
+    	var style = {
+    		left: ""
+    	}
+
 		return(
+
 			<div>
-			        <div className="col-md-12">
-                        <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick} />
-                    </div>
-                    <img x="25" y="25" className="troll" src="./assets/img/Puzzle_A.png" ref="pieceA" key="pieceA" />
-                    <img x="35" y="55" className="troll" src="./assets/img/Puzzle_B.png" ref="pieceB" key="pieceB" />
-                    <img x="65" y="35" className="troll" src="./assets/img/Puzzle_C.png" ref="pieceC" key="pieceC" />
-                    <img x="105" y="18" className="troll" src="./assets/img/Puzzle_D.png" ref="pieceD" key="pieceD" />
-                    <img x="110" y="50" className="troll" src="./assets/img/Puzzle_E.png" ref="pieceE" key="pieceE" />
+			<div className="characterMenuTop row col-md-12">
+                    <img x="25" y="25" className="troll" style={style} id="trollOlav" ref="pieceA"  key="pieceA" src="./assets/img/Puzzle_A.png" />
+                    <img x="110" y="50" className="troll" style={style} id="girl" ref="pieceE"  key="pieceB" src="./assets/img/Puzzle_E.png" />
+			</div>
+
+
+			<div className="characterMenuBottom row col-md-12">
+                    <img x="35" y="55" className="troll" style={style} id="sealBoy" ref="pieceB"  key="pieceC" src="./assets/img/Puzzle_B.png" />
+                    <img x="65" y="35" className="troll" style={style} id="snowMan" ref="pieceC"  key="pieceD" src="./assets/img/Puzzle_C.png" />
+                    <img x="105" y="18" className="troll" style={style} id="sealGirl" ref="pieceD"  key="pieceE" src="./assets/img/Puzzle_D.png" />
+			</div>
+
 
 			</div>
 		);
