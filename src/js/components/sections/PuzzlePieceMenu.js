@@ -153,7 +153,6 @@ componentDidMount: function(){
                 }	    
             }		
         });
-        
 	}
         
 	},
