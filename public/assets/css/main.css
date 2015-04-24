@@ -69,19 +69,25 @@ body{
     padding: 20px;
     font-size: 23px;
     border-radius: 8px;
-    margin: 10px 10px 15px;
+    float: left;
+/*    margin: 10px 10px 15px;*/
 }
 
 .glyphicon-volume-off {
     display: inline-block;
     margin: auto;
     padding: 20px;
-    margin: 10px;
+    float: right;
+/*    margin: 10px;*/
     border: none;
     color: white;
     background-color: #6A5ACD;
     border-radius: 8px;
     font-size: 30px;
+}
+
+.buttonsDiv {
+    clear: both;
 }
 
 

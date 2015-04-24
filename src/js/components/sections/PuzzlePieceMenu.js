@@ -198,9 +198,11 @@ componentDidMount: function(){
                     <img x="65" y="35" className="troll" style={style} id="snowMan" ref="pieceC"  key="pieceD" src="./assets/img/Puzzle_C.png" />
                     <img x="105" y="18" className="troll" style={style} id="sealGirl" ref="pieceD"  key="pieceE" src="./assets/img/Puzzle_D.png" />
                 </div>
-                <div className="buttonsDiv">
-                    <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick} />
-                    <button className="glyphicon glyphicon-volume-off" onClick={this.muter} />
+                <div className="row">
+                    <div className="col-md-6">
+                        <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick} />
+                        <button className="glyphicon glyphicon-volume-off" onClick={this.muter} />
+                    </div>
                 </div>
             </div>
 		);
