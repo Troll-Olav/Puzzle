@@ -3,15 +3,11 @@ var Board = require('./Board.js');
 
 var audio = new Audio('./assets/audio/cheer.mp3');
 
+var puzzleBrick;
 
 var PuzzlePieceMenu = React.createClass({
 
-componentWillMount: function(){
-
-},
-
 componentDidMount: function(){
-
 
     var content = document.getElementById("content");
     var windowWidth = this.props.window;
@@ -25,7 +21,7 @@ componentDidMount: function(){
 
 
 
-	var puzzleBrick = Draggable.create(".troll", {
+	puzzleBrick = Draggable.create(".troll", {
 	    type:"x,y",
 	    bounds: window,
 	    onDrag: function(e){
@@ -164,6 +160,8 @@ componentDidMount: function(){
         React.findDOMNode(this.refs.pieceC).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
+        console.log('enabling puzzleBrick: ', puzzleBrick);
+        puzzleBrick.enable();
 		
     },
     
