@@ -5,7 +5,8 @@ var PuzzlePieceMenu = require("./sections/PuzzlePieceMenu");
 var PuzzleApp = React.createClass({
 	
 		getInitialState: function() {
-		    return {windowWidth: window.innerWidth};
+		    return {windowWidth: window.innerWidth,
+		    		muted: false};
 		 },
 
 		update: function(e){
@@ -17,45 +18,14 @@ var PuzzleApp = React.createClass({
 			});
 		},
 
-		onDragStart: function(e){
-			console.log('onDragStart triggered');
+		toggleMute: function(){
+			console.log('toggleMute in PuzzleApp')
 			this.setState({
-				position: {
-					x: e.pageX - 88,
-					y: e.pageY - 88
-				}
+				windowWidth: window.innerWidth,
+				muted: !this.state.muted
 			});
 		},
 
-		onDragEnd: function(e){
-			console.log('onDragEnd triggered');
-			this.setState({
-				position: {
-					x: e.pageX - 88,
-					y: e.pageY - 88
-				}
-			});
-		},
-
-		onDrag: function(e){
-			this.setState({
-				position: {
-					x: e.pageX - 88,
-					y: e.pageY - 88
-				}
-			});
-		},
-
-		onClick: function(e){
-			console.log('onClick');
-			console.log(e.pageX);
-			this.setState({
-				position: {
-					x: e.pageX - 88,
-					y: e.pageY - 88
-				}
-			});
-		},
     render: function() {
         return (
             <div>
@@ -63,10 +33,8 @@ var PuzzleApp = React.createClass({
                     <Board position={this.state.position} />
                     <PuzzlePieceMenu 	position={this.state.position} 
                     					window={this.state.windowWidth} 
-                    					clickHandler={this.state.onClick} 
-                    					onDragHandler={this.state.onDrag} 
-                    					dragHandler={this.state.onDragStart} 
-                    					onDragEndHandler={this.state.onDragEnd} />
+                    					muted={this.state.muted}
+                    					toggleMute={this.toggleMute} />
                 </div>
 
             </div>
