@@ -194,10 +194,20 @@ componentDidMount: function(){
     	console.log('muted');
         audio.muted = !audio.muted;
         finalSong.muted = !finalSong.muted;
+        console.log('toggling mute');
+
     },
     
 
     render: function(){
+    	console.log(this.props);
+    	console.log('toggleMute: ', this.props.toggleMute);
+		if (this.props.muted) {
+			soundButtonClass = "glyphicon glyphicon-volume-up";
+		} 
+		else  {
+			soundButtonClass = "glyphicon glyphicon-volume-off";
+		}
 
     	var style = {
     		left: ""
@@ -216,12 +226,10 @@ componentDidMount: function(){
                     <img x="1065" y="175" className="troll" width="260" style={style} id="sealGirl" ref="pieceD"  key="pieceE" src="./assets/img/Puzzle_D.png" />
 			</div>
 
-
-
                 <div className="buttonsDiv">
                     <div className="innerButtonDiv">
-                        <button  value="Spill igjen" className="glyphicon glyphicon-refresh" id="playAgain" onClick={this._onClick} />
-                        <button className="glyphicon glyphicon-volume-off" onClick={this.muter} />
+                        <button  value="Spill igjen" ref="sound" className="glyphicon glyphicon-refresh" id="playAgain" onClick={this._onClick} />
+                        <button className={soundButtonClass}  onClick={this.props.toggleMute} />
                     </div>
                 </div>
 		
