@@ -57,10 +57,9 @@ var PuzzleApp = React.createClass({
 			});
 		},
     render: function() {
-    	console.log('windowWitdh: ', this.state.windowWidth)
         return (
             <div>
-                <div className="row">
+                <div >
                     <Board position={this.state.position} />
                     <PuzzlePieceMenu 	position={this.state.position} 
                     					window={this.state.windowWidth} 
