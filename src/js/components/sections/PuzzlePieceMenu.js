@@ -195,6 +195,7 @@ componentDidMount: function(){
         audio.muted = !audio.muted;
         finalSong.muted = !finalSong.muted;
         console.log('toggling mute');
+        this.props.toggleMute();
 
     },
     
@@ -229,7 +230,7 @@ componentDidMount: function(){
                 <div className="buttonsDiv">
                     <div className="innerButtonDiv">
                         <button  value="Spill igjen" ref="sound" className="glyphicon glyphicon-refresh" id="playAgain" onClick={this._onClick} />
-                        <button className={soundButtonClass}  onClick={this.props.toggleMute} />
+                        <button className={soundButtonClass}  onClick={this.muter} />
                     </div>
                 </div>
 		
