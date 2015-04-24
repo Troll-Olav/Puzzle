@@ -3,12 +3,9 @@ var Board = require('./Board.js');
 
 var audio = new Audio('./assets/audio/cheer.mp3');
 
+var puzzleBrick;
 
 var PuzzlePieceMenu = React.createClass({
-
-componentWillMount: function(){
-
-},
 
 componentDidMount: function(){
 
@@ -41,7 +38,7 @@ componentDidMount: function(){
 
 
 
-	var puzzleBrick = Draggable.create(".troll", {
+	puzzleBrick = Draggable.create(".troll", {
 	    type:"x,y",
 	    bounds: window,
 	    onDrag: function(e){
@@ -170,6 +167,7 @@ componentDidMount: function(){
 				audio.play();
 
 
+
 			}	    
 		}		
 });
@@ -180,12 +178,18 @@ componentDidMount: function(){
     
     
     _onClick: function() {
+    	window.location.reload()
+/*
         React.findDOMNode(this.refs.pieceA).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceB).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceC).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
-		
+        console.log('enabling puzzleBrick: ', puzzleBrick);
+        puzzleBrick.forEach(function(singleBrick){
+        	singleBrick.enable();
+        });
+*/
     },
     
     muter: function() {
@@ -212,7 +216,7 @@ componentDidMount: function(){
                     <img x="105" y="18" className="troll" width="28" style={style} id="sealGirl" ref="pieceD"  key="pieceE" src="./assets/img/Puzzle_D.png" />
 			</div>
 <div className="buttonsDiv">
-                    <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick} />
+                    <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick}/>
                     <button className="glyphicon glyphicon-volume-off" onClick={this.muter} />
                 </div>
 
