@@ -2,6 +2,7 @@ var React = require('react');
 var Board = require('./Board.js');
 
 var audio = new Audio('./assets/audio/cheer.mp3');
+var finalSong = new Audio('./assets/audio/final.mp3');
 
 var puzzleBrick;
 
@@ -9,6 +10,7 @@ var PuzzlePieceMenu = React.createClass({
 
 componentDidMount: function(){
 
+    var count = 0;
     var content = document.getElementById("content");
     var windowWidth = this.props.window;
 	var puzzleWidth = windowWidth * 0.8;
@@ -149,8 +151,15 @@ componentDidMount: function(){
 	
 	function disable(index){
 		puzzleBrick[index].disable();
-		console.log(puzzleBrick);
 		console.log('DISABLING DRAGGABLE');
+        count++;
+        if (count <= 4) {
+            audio.play();
+        } else {
+            finalSong.play();
+        }
+        console.log("count:", count);
+
 	}
     
 	function animate(element, distance_top, distance_left, that){
@@ -159,19 +168,18 @@ componentDidMount: function(){
 			top: distance_top,
 			left: distance_left,
 		}, 700, function(){
-		for (i=0;i<puzzleBrick.length;i++){
-			if (puzzleBrick[i] === that){
-				disable(i);
-				element.css('z-index', 0);
-				audio.play();
 
+            var i;
+            for (i=0;i<puzzleBrick.length;i++){
+                if (puzzleBrick[i] === that){
+                    disable(i);
+                    element.css('z-index', 0);
 
+                }	    
+            }		
+        }); 
+	}
 
-			}	    
-		}		
-});
-
-}
         
 	},
     
@@ -193,6 +201,7 @@ componentDidMount: function(){
     
     muter: function() {
         audio.muted = true;
+        finalSong.muted = true;
     },
     
 
