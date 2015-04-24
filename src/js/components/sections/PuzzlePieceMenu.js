@@ -2,18 +2,15 @@ var React = require('react');
 var Board = require('./Board.js');
 
 var audio = new Audio('./assets/audio/cheer.mp3');
-//var finalCheer = new Audio('http://www.noiseaddicts.com/samples/3733.mp3');
+var finalSong = new Audio('./assets/audio/final.mp3');
 
+var puzzleBrick;
 
 var PuzzlePieceMenu = React.createClass({
 
-componentWillMount: function(){
-
-},
-
 componentDidMount: function(){
 
-
+    var count = 0;
     var content = document.getElementById("content");
     var windowWidth = this.props.window;
 	var puzzleWidth = windowWidth * 0.8;
@@ -26,7 +23,7 @@ componentDidMount: function(){
 
 
 
-	var puzzleBrick = Draggable.create(".troll", {
+	puzzleBrick = Draggable.create(".troll", {
 	    type:"x,y",
 	    bounds: window,
 	    onDrag: function(e){
@@ -138,20 +135,14 @@ componentDidMount: function(){
 	
 	function disable(index){
 		puzzleBrick[index].disable();
-        var i;
-//        var count = 0;
-//        var disabled = [];
-        for (i=0;i<puzzleBrick.length;i++){
-//            count++;
-//            if (count === 5 ) {
-//                finalCheer.play();
-//            }
-//            console.log("count:", count);
-//            puzzleBrick[i] = puzzleBrick[index];
-//            disabled.push(puzzleBrick[i]);
-//            console.log("disabled:", disabled);
-        }
 		console.log('DISABLING DRAGGABLE');
+        count++;
+        if (count <= 4) {
+            audio.play();
+        } else {
+            finalSong.play();
+        }
+        console.log("count:", count);
 
 	}
     
@@ -164,12 +155,11 @@ componentDidMount: function(){
             for (i=0;i<puzzleBrick.length;i++){
                 if (puzzleBrick[i] === that){
                     disable(i);
-                    audio.play();
                 }	    
             }		
-        });
-        
+        }); 
 	}
+
         
 	},
     
@@ -180,11 +170,14 @@ componentDidMount: function(){
         React.findDOMNode(this.refs.pieceC).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
+        console.log('enabling puzzleBrick: ', puzzleBrick);
+        puzzleBrick.enable();
 		
     },
     
     muter: function() {
         audio.muted = true;
+        finalSong.muted = true;
     },
     
 
