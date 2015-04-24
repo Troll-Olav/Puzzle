@@ -61,22 +61,20 @@ body{
 
 
 #playAgain {
+/*
     display: inline-block;
     margin: auto;
+*/
     border: none;
     background-color: #8fefef;
     color: white;
     padding: 20px;
     font-size: 23px;
     border-radius: 8px;
-    margin: 10px 10px 15px;
 }
 
 .glyphicon-volume-off {
-    display: inline-block;
-    margin: auto;
     padding: 20px;
-    margin: 10px;
     border: none;
     color: white;
     background-color: #6A5ACD;
@@ -84,5 +82,14 @@ body{
     font-size: 30px;
 }
 
+.buttonsDiv {
+    margin: auto;
+}
+
+
+.innerButtonDiv {
+    margin: auto;
+    
+}
 
 
