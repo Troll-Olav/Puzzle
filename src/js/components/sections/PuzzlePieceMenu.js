@@ -16,8 +16,8 @@ componentDidMount: function(){
 	var puzzleWidth = windowWidth * 0.8;
 	var puzzleHeight = puzzleWidth * 0.738;
 	var margin_left = (windowWidth - puzzleWidth) / 2;
-	var pixelsPerPercentWidth = puzzleWidth / 100;
-	var pixelsPerPercentHeight = puzzleHeight / 100;
+	var pixelsPerPercentWidth = puzzleWidth / 1000;
+	var pixelsPerPercentHeight = puzzleHeight / 1000;
 
 	console.log('windowWidth: ', windowWidth);
 	console.log('puzzleHeight: ', puzzleHeight);
@@ -28,7 +28,7 @@ componentDidMount: function(){
 	var bottomMenu = document.getElementsByClassName("characterMenuBottom");
 	console.log('bottomMenu: ',bottomMenu);
 
-	bottomMenu[0].style.top = puzzleHeight*0.6 + "px";
+	bottomMenu[0].style.top = puzzleHeight *0.6 + "px";
 
 	for (var i=0, len = pieces.length; i < len; i++){
 		piece = pieces[i];
@@ -82,10 +82,10 @@ componentDidMount: function(){
 	    	var y_diff = Math.abs(y_center - y_goal);
 	    	console.log('x_diff: ', x_diff);
 	    	console.log('y_diff: ', y_diff);
-	    	var threshold = 100;
+	    	var threshold = 20;
 	    	var that = this;
 
-	    	if (x_diff < 100 && y_diff < threshold) {
+	    	if (x_diff < threshold && y_diff < threshold) {
 
 		    		// the object is within the threshold
 		    		console.log('the object is within the threshold');
@@ -185,23 +185,15 @@ componentDidMount: function(){
     
     
     _onClick: function() {
+    	console.log('clicked!');
     	window.location.reload()
-/*
-        React.findDOMNode(this.refs.pieceA).style.transform = "translate3d(0px, 0px, 0px)";
-        React.findDOMNode(this.refs.pieceB).style.transform = "translate3d(0px, 0px, 0px)";
-        React.findDOMNode(this.refs.pieceC).style.transform = "translate3d(0px, 0px, 0px)";
-        React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
-        React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
-        console.log('enabling puzzleBrick: ', puzzleBrick);
-        puzzleBrick.forEach(function(singleBrick){
-        	singleBrick.enable();
-        });
-*/
+
     },
     
     muter: function() {
-        audio.muted = true;
-        finalSong.muted = true;
+    	console.log('muted');
+        audio.muted = !audio.muted;
+        finalSong.muted = !finalSong.muted;
     },
     
 
@@ -214,21 +206,25 @@ componentDidMount: function(){
 		return(
 			<div>
 			<div className="characterMenuTop col-md-12" style={style}>
-                    <img x="25" y="24" className="troll" width="25" style={style} id="trollOlav" ref="pieceA"  key="pieceA" src="./assets/img/Puzzle_A.png" />
-                    <img x="111" y="50" className="troll" width="23"  style={style} id="girl" ref="pieceE"  key="pieceE" src="./assets/img/Puzzle_E.png" />
+                    <img x="245" y="238" className="troll" width="244" style={style} id="trollOlav" ref="pieceA"  key="pieceA" src="./assets/img/Puzzle_A.png" />
+                    <img x="1091" y="500" className="troll" width="223"  style={style} id="girl" ref="pieceE"  key="pieceE" src="./assets/img/Puzzle_E.png" />
 			</div>
 
 			<div className="characterMenuBottom col-md-12">
-                    <img x="35" y="57" className="troll" width="27"  style={style} id="sealBoy" ref="pieceB"  key="pieceC" src="./assets/img/Puzzle_B.png" />
-                    <img x="67" y="36" className="troll" width="34" style={style} id="snowMan" ref="pieceC"  key="pieceD" src="./assets/img/Puzzle_C.png" />
-                    <img x="108" y="18" className="troll" width="27" style={style} id="sealGirl" ref="pieceD"  key="pieceE" src="./assets/img/Puzzle_D.png" />
+                    <img x="345" y="560" className="troll" width="261"  style={style} id="sealBoy" ref="pieceB"  key="pieceC" src="./assets/img/Puzzle_B.png" />
+                    <img x="663" y="359" className="troll" width="316" style={style} id="snowMan" ref="pieceC"  key="pieceD" src="./assets/img/Puzzle_C.png" />
+                    <img x="1065" y="175" className="troll" width="260" style={style} id="sealGirl" ref="pieceD"  key="pieceE" src="./assets/img/Puzzle_D.png" />
 			</div>
-			<div className="buttonsDiv">
-			<div className="innerButtonsDiv">
-                    <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick}/>
-                    <button className="glyphicon glyphicon-volume-off" onClick={this.muter} />
+
+
+
+                <div className="buttonsDiv">
+                    <div className="innerButtonDiv">
+                        <button  value="Spill igjen" className="glyphicon glyphicon-refresh" id="playAgain" onClick={this._onClick} />
+                        <button className="glyphicon glyphicon-volume-off" onClick={this.muter} />
+                    </div>
                 </div>
-			</div>
+		
 			</div>
 
 		);
