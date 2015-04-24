@@ -10,7 +10,7 @@ var Board = React.createClass({
 			return (
 				<div className="row">
                     <div className="col-md-12 puzzleContainer">
-                        <img className="puzzleBoard" src="./assets/img/Example.jpg"></img>
+                        <img className="puzzleBoard" src="./assets/img/Example.png"></img>
                     </div>
 				</div>
             );

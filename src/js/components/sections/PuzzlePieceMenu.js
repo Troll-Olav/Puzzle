@@ -19,7 +19,23 @@ componentDidMount: function(){
 	var pixelsPerPercentWidth = puzzleWidth / 100;
 	var pixelsPerPercentHeight = puzzleHeight / 100;
 
+	console.log('windowWidth: ', windowWidth);
 	console.log('puzzleHeight: ', puzzleHeight);
+	console.log('puzzleWidth: ', puzzleWidth);
+	console.log('margin_left: ', margin_left);
+
+	var pieces = document.getElementsByClassName("troll");
+	var bottomMenu = document.getElementsByClassName("characterMenuBottom");
+	console.log('bottomMenu: ',bottomMenu);
+
+	bottomMenu[0].style.top = puzzleHeight*0.6 + "px";
+
+	for (var i=0, len = pieces.length; i < len; i++){
+		piece = pieces[i];
+		width = pieces[i].getAttribute('width')
+		pieces[i].style.width = (pixelsPerPercentWidth*width) + "px";
+		pieces[i].style.zIndex = 1;
+	}
 
 
 
@@ -50,6 +66,7 @@ componentDidMount: function(){
 	    	console.log('x_goal: ',x_goal);
 	    	console.log('y_goal: ',y_goal);
 	    	var element = $(target);
+	    	console.log(element);
 	    	var offset = $(target).offset();
 	    	console.log('element: ', element);
 	    	//console.log('offset.left: ', offset.left);
@@ -69,7 +86,6 @@ componentDidMount: function(){
 	    	var that = this;
 
 	    	if (x_diff < 100 && y_diff < threshold) {
-
 
 		    		// the object is within the threshold
 		    		console.log('the object is within the threshold');
@@ -147,14 +163,18 @@ componentDidMount: function(){
 	}
     
 	function animate(element, distance_top, distance_left, that){
-		element.animate({
+		element
+			.animate({
 			top: distance_top,
-			left: distance_left
+			left: distance_left,
 		}, 700, function(){
+
             var i;
             for (i=0;i<puzzleBrick.length;i++){
                 if (puzzleBrick[i] === that){
                     disable(i);
+                    element.css('z-index', 0);
+
                 }	    
             }		
         }); 
@@ -165,14 +185,18 @@ componentDidMount: function(){
     
     
     _onClick: function() {
+    	window.location.reload()
+/*
         React.findDOMNode(this.refs.pieceA).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceB).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceC).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceD).style.transform = "translate3d(0px, 0px, 0px)";
         React.findDOMNode(this.refs.pieceE).style.transform = "translate3d(0px, 0px, 0px)";
         console.log('enabling puzzleBrick: ', puzzleBrick);
-        puzzleBrick.enable();
-		
+        puzzleBrick.forEach(function(singleBrick){
+        	singleBrick.enable();
+        });
+*/
     },
     
     muter: function() {
@@ -189,20 +213,23 @@ componentDidMount: function(){
         
 		return(
 			<div>
-                <div className="characterMenuTop row col-md-12">
-                    <img x="25" y="25" className="troll" style={style} id="trollOlav" ref="pieceA"  key="pieceA" src="./assets/img/Puzzle_A.png" />
-                    <img x="110" y="50" className="troll" style={style} id="girl" ref="pieceE"  key="pieceB" src="./assets/img/Puzzle_E.png" />
-                </div>
-                <div className="characterMenuBottom row col-md-12">
-                    <img x="35" y="55" className="troll" style={style} id="sealBoy" ref="pieceB"  key="pieceC" src="./assets/img/Puzzle_B.png" />
-                    <img x="65" y="35" className="troll" style={style} id="snowMan" ref="pieceC"  key="pieceD" src="./assets/img/Puzzle_C.png" />
-                    <img x="105" y="18" className="troll" style={style} id="sealGirl" ref="pieceD"  key="pieceE" src="./assets/img/Puzzle_D.png" />
-                </div>
-                <div className="buttonsDiv">
-                    <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick} />
+			<div className="characterMenuTop col-md-12" style={style}>
+                    <img x="25" y="24" className="troll" width="25" style={style} id="trollOlav" ref="pieceA"  key="pieceA" src="./assets/img/Puzzle_A.png" />
+                    <img x="111" y="50" className="troll" width="23"  style={style} id="girl" ref="pieceE"  key="pieceE" src="./assets/img/Puzzle_E.png" />
+			</div>
+
+			<div className="characterMenuBottom col-md-12">
+                    <img x="35" y="57" className="troll" width="27"  style={style} id="sealBoy" ref="pieceB"  key="pieceC" src="./assets/img/Puzzle_B.png" />
+                    <img x="67" y="36" className="troll" width="34" style={style} id="snowMan" ref="pieceC"  key="pieceD" src="./assets/img/Puzzle_C.png" />
+                    <img x="108" y="18" className="troll" width="27" style={style} id="sealGirl" ref="pieceD"  key="pieceE" src="./assets/img/Puzzle_D.png" />
+			</div>
+<div className="buttonsDiv">
+                    <input type="submit" value="Spill igjen" id="playAgain" onClick={this._onClick}/>
                     <button className="glyphicon glyphicon-volume-off" onClick={this.muter} />
                 </div>
-            </div>
+
+			</div>
+
 		);
     }
 });
